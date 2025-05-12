@@ -8,47 +8,53 @@ eureka:
 spring:
   application:
     name: api-gateway
+
   cloud:
     config:
       enabled: false
+
     gateway:
       routes:
-        - id: video-search
-          uri: ${services.videosearch.url}
-          predicates:
-            - Path=/search/video/**
-          filters:
-            - RemoveRequestHeader=Cookie
-            - RewritePath=/video-service/(?<segment>.*), /${segment}
-        - id: encyclopedia
-          uri: ${services.encyclopedia.url}
-          predicates:
-            - Path=/search/encyclopedia/**
-          filters:
-            - RemoveRequestHeader=Cookie
-            - RewritePath=/encyclopedia-service/(?<segment>.*), /${segment}
-        - id: news
-          uri: ${services.news.url}
-          predicates:
-            - Path=/search/news/**
-          filters:
-            - RemoveRequestHeader=Cookie
-            - RewritePath=/news-service/(?<segment>.*), /${segment}
-        - id: game
-          uri: ${services.game.url}
-          predicates:
-            - Path=/search/game/**
-          filters:
-            - RemoveRequestHeader=Cookie
-            - RewritePath=/game-service/(?<segment>.*), /${segment}
-        - id: monitoring
-          uri: ${services.monitoring.url}
-          predicates:
-            - Path=/monitor/**
-          filters:
-            - RemoveRequestHeader=Cookie
-            - RewritePath=/monitor-service/(?<segment>.*), /${segment}
 
+        # VideoSearch
+        - id: video-search
+          uri: ${services.videosearch.url}    # http://localhost:8081
+          predicates:
+            - Path=/video-service/**          # /video-service/** 로 시작하는 요청 전부
+          filters:
+            - RemoveRequestHeader=Cookie      # Cookie 헤더만 삭제
+
+        # Encyclopedia
+        - id: encyclopedia
+          uri: ${services.encyclopedia.url}  # http://localhost:8082
+          predicates:
+            - Path=/encyclopedia-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+
+        # News
+        - id: news
+          uri: ${services.news.url}          # http://localhost:8083
+          predicates:
+            - Path=/news-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+
+        # Game
+        - id: game
+          uri: ${services.game.url}          # http://localhost:8084
+          predicates:
+            - Path=/game-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+
+        # Monitoring
+        - id: monitoring
+          uri: ${services.monitoring.url}    # http://localhost:8085
+          predicates:
+            - Path=/monitor-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
 
 services:
   videosearch:
