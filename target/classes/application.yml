@@ -1,0 +1,63 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    enabled: false
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    config:
+      enabled: false
+    gateway:
+      routes:
+        - id: video-search
+          uri: ${services.videosearch.url}
+          predicates:
+            - Path=/search/video/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/video-service/(?<segment>.*), /${segment}
+        - id: encyclopedia
+          uri: ${services.encyclopedia.url}
+          predicates:
+            - Path=/search/encyclopedia/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/encyclopedia-service/(?<segment>.*), /${segment}
+        - id: news
+          uri: ${services.news.url}
+          predicates:
+            - Path=/search/news/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/news-service/(?<segment>.*), /${segment}
+        - id: game
+          uri: ${services.game.url}
+          predicates:
+            - Path=/search/game/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/game-service/(?<segment>.*), /${segment}
+        - id: monitoring
+          uri: ${services.monitoring.url}
+          predicates:
+            - Path=/monitor/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/monitor-service/(?<segment>.*), /${segment}
+
+
+services:
+  videosearch:
+    url: http://localhost:8081
+  encyclopedia:
+    url: http://localhost:8082
+  news:
+    url: http://localhost:8083
+  game:
+    url: http://localhost:8084
+  monitoring:
+    url: http://localhost:8085
