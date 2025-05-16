@@ -3,7 +3,10 @@ server:
 
 eureka:
   client:
-    enabled: false
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
 
 spring:
   application:
@@ -58,7 +61,7 @@ spring:
 
 services:
   videosearch:
-    url: http://localhost:8081
+    url: http://localhost:8081 # lb://VIDEO-SEARCH
   encyclopedia:
     url: http://localhost:8082
   news:
