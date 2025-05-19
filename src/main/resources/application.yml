@@ -62,6 +62,6 @@ services:
   news:
     url: http://news-tag-search:8083
   game:
-    url: http://game-search:8084
+    url: http://game-service:8084
   monitoring:
     url: http://monitoring:8085

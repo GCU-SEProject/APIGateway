@@ -52,7 +52,7 @@ public class GatewayConfig {
 
                 // Game 검색
                 .route("game", r -> r
-                        .path("/search/game/**")
+                        .path("/ame-service/**")
                         .filters(f -> f
                                 .removeRequestHeader("Cookie")
                                 .rewritePath("/game-service/(?<segment>.*)", "/${segment}")
