@@ -1,7 +1,4 @@
-/Users/parkyoungdu/IdeaProjects/MSA_Springboot/apigateway-service/src/main/java/com/example/apigatewayservice/config/ActuatorHttpExchangesConfiguration.java
-/Users/parkyoungdu/IdeaProjects/MSA_Springboot/apigateway-service/src/main/java/com/example/apigatewayservice/config/FilterConfig.java
-/Users/parkyoungdu/IdeaProjects/MSA_Springboot/apigateway-service/src/main/java/com/example/apigatewayservice/ApigatewayServiceApplication.java
-/Users/parkyoungdu/IdeaProjects/MSA_Springboot/apigateway-service/src/main/java/com/example/apigatewayservice/filter/AuthorizationHeaderFilter.java
-/Users/parkyoungdu/IdeaProjects/MSA_Springboot/apigateway-service/src/main/java/com/example/apigatewayservice/filter/CustomFilter.java
-/Users/parkyoungdu/IdeaProjects/MSA_Springboot/apigateway-service/src/main/java/com/example/apigatewayservice/filter/LoggingFilter.java
-/Users/parkyoungdu/IdeaProjects/MSA_Springboot/apigateway-service/src/main/java/com/example/apigatewayservice/filter/GlobalFilter.java
+/Users/parkyoungdu/Documents/GitHub/APIGateway/src/main/java/com/example/apigatewayservice/exception/GlobalExceptionHandler.java
+/Users/parkyoungdu/Documents/GitHub/APIGateway/src/main/java/com/example/apigatewayservice/config/GatewayConfig.java
+/Users/parkyoungdu/Documents/GitHub/APIGateway/src/main/java/com/example/apigatewayservice/filter/LoggingGlobalFilter.java
+/Users/parkyoungdu/Documents/GitHub/APIGateway/src/main/java/com/example/apigatewayservice/ApigatewayServiceApplication.java
