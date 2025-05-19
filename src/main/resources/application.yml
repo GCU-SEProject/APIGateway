@@ -58,10 +58,10 @@ services:
   videosearch:
     url: http://youtube-search:8081
   encyclopedia:
-    url: http://encyclopedia-search:8083
+    url: http://encyclopedia-search:8082
   news:
-    url: http://news-tag-search:8084
+    url: http://news-tag-search:8083
   game:
-    url: http://game-search:8082
+    url: http://game-search:8084
   monitoring:
     url: http://monitoring:8085
