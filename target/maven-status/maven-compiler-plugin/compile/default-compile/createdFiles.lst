@@ -1,4 +1,0 @@
-com/example/apigatewayservice/ApigatewayServiceApplication.class
-com/example/apigatewayservice/filter/LoggingGlobalFilter.class
-com/example/apigatewayservice/exception/GlobalExceptionHandler.class
-com/example/apigatewayservice/config/GatewayConfig.class
