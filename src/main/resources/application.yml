@@ -1,24 +1,12 @@
 server:
   port: 8080
 
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-
 spring:
   application:
     name: api-gateway
-
   cloud:
-    config:
-      enabled: false
-
     gateway:
       routes:
-
         # VideoSearch
         - id: video-search
           uri: ${services.videosearch.url}    # http://localhost:8081
@@ -59,14 +47,21 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
 
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka:8761/eureka/
+
 services:
   videosearch:
-    url: http://localhost:8081 # lb://VIDEO-SEARCH
+    url: http://youtube-search:8081
   encyclopedia:
-    url: http://localhost:8082
+    url: http://encyclopedia-search:8082
   news:
-    url: http://localhost:8083
+    url: http://news-tag-search:8083
   game:
-    url: http://localhost:8084
+    url: http://game-service:8084
   monitoring:
-    url: http://localhost:8085
+    url: http://monitoring:8085
