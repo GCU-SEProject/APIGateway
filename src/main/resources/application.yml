@@ -9,59 +9,53 @@ spring:
       routes:
         # VideoSearch
         - id: video-search
-          uri: ${services.videosearch.url}    # http://localhost:8081
+          uri: http://video-service:8081    # http://localhost:8081
           predicates:
             - Path=/video-service/**          # /video-service/** 로 시작하는 요청 전부
           filters:
             - RemoveRequestHeader=Cookie      # Cookie 헤더만 삭제
+            #- RewritePath=/video-service/(?<segment>.*), /$\{segment} # StripPrefix=1 로 대체 가능
 
         # Encyclopedia
         - id: encyclopedia
-          uri: ${services.encyclopedia.url}  # http://localhost:8082
+          uri: http://encyclopedia-service:8082  # http://localhost:8082
           predicates:
             - Path=/encyclopedia-service/**
           filters:
             - RemoveRequestHeader=Cookie
+            #- RewritePath=/encyclopedia-service/(?<segment>.*), /$\{segment}
 
         # News
         - id: news
-          uri: ${services.news.url}          # http://localhost:8083
+          uri: http://news-service:8083          # http://localhost:8083
           predicates:
             - Path=/news-service/**
           filters:
             - RemoveRequestHeader=Cookie
+            #- RewritePath=/news-service/(?<segment>.*), /$\{segment}
 
         # Game
         - id: game
-          uri: ${services.game.url}          # http://localhost:8084
+          uri: http://game-service:8084          # http://localhost:8084
           predicates:
             - Path=/game-service/**
           filters:
             - RemoveRequestHeader=Cookie
+            #- RewritePath=/game-service/(?<segment>.*), /$\{segment}
 
         # Monitoring
         - id: monitoring
-          uri: ${services.monitoring.url}    # http://localhost:8085
+          uri: http://monitor-service:8085    # http://localhost:8085
           predicates:
             - Path=/monitor-service/**
           filters:
             - RemoveRequestHeader=Cookie
+            #- RewritePath=/monitor-service/(?<segment>.*), /$\{segment}
 
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
+    registry-fetch-interval-seconds: 5
     service-url:
       defaultZone: http://eureka:8761/eureka/
-
-services:
-  videosearch:
-    url: http://youtube-search:8081
-  encyclopedia:
-    url: http://encyclopedia-search:8082
-  news:
-    url: http://news-tag-search:8083
-  game:
-    url: http://game-service:8084
-  monitoring:
-    url: http://monitoring:8085
